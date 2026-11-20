@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary SEO -->
+  <title>3D Carousel – Free HTML, CSS &amp; JavaScript 3D Curved Carousel Slider</title>
+  <meta name="description" content="A free, lightweight 3D carousel built with pure HTML, CSS and JavaScript. Drag, swipe, click or use arrow keys. No libraries, responsive and open source.">
+  <meta name="keywords" content="3d carousel, 3d carousel css, 3d carousel javascript, 3d curved carousel, css 3d slider, javascript carousel, perspective carousel, html css carousel, open source carousel">
+  <meta name="author" content="Akshit Joshi">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://akshitjoshi-123.github.io/3d-carousel/">
+  <meta name="theme-color" content="#090a0f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="3D Carousel">
+  <meta property="og:title" content="3D Carousel – Free HTML, CSS &amp; JavaScript 3D Curved Carousel">
+  <meta property="og:description" content="Lightweight 3D carousel with drag, swipe, click and keyboard controls. Pure HTML, CSS and JavaScript.">
+  <meta property="og:url" content="https://akshitjoshi-123.github.io/3d-carousel/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&auto=format&fit=crop">
+  <meta property="og:image:alt" content="3D carousel with Aurora Borealis card in the center">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="3D Carousel – HTML, CSS &amp; JavaScript">
+  <meta name="twitter:description" content="Lightweight 3D curved carousel. Drag, swipe, click or use arrow keys.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&auto=format&fit=crop">
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://github.com/akshitjoshi-123#person",
+        "name": "Akshit Joshi",
+        "url": "https://github.com/akshitjoshi-123",
+        "sameAs": ["https://github.com/akshitjoshi-123"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://akshitjoshi-123.github.io/3d-carousel/#website",
+        "url": "https://akshitjoshi-123.github.io/3d-carousel/",
+        "name": "3D Carousel",
+        "inLanguage": "en",
+        "author": { "@id": "https://github.com/akshitjoshi-123#person" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://akshitjoshi-123.github.io/3d-carousel/#webpage",
+        "url": "https://akshitjoshi-123.github.io/3d-carousel/",
+        "name": "3D Carousel – Free HTML, CSS & JavaScript 3D Curved Carousel Slider",
+        "description": "A free, lightweight 3D carousel built with pure HTML, CSS and JavaScript. Drag, swipe, click or use arrow keys.",
+        "isPartOf": { "@id": "https://akshitjoshi-123.github.io/3d-carousel/#website" },
+        "primaryImageOfPage": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1200&auto=format&fit=crop",
+        "breadcrumb": { "@id": "https://akshitjoshi-123.github.io/3d-carousel/#breadcrumb" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://akshitjoshi-123.github.io/3d-carousel/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "GitHub", "item": "https://github.com/akshitjoshi-123" },
+          { "@type": "ListItem", "position": 2, "name": "3D Carousel", "item": "https://akshitjoshi-123.github.io/3d-carousel/" }
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "3D Carousel",
+        "description": "3D curved carousel with drag, swipe, click and keyboard navigation. No dependencies.",
+        "programmingLanguage": ["HTML", "CSS", "JavaScript"],
+        "codeRepository": "https://github.com/akshitjoshi-123/3d-carousel",
+        "runtimePlatform": "Web browser",
+        "license": "https://opensource.org/licenses/MIT",
+        "keywords": "3d carousel, css 3d slider, javascript carousel",
+        "author": { "@id": "https://github.com/akshitjoshi-123#person" }
+      },
+      {
+        "@type": "ItemList",
+        "name": "3D Carousel demo slides",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Aurora Borealis – Norway" },
+          { "@type": "ListItem", "position": 2, "name": "Alpine Pass – Switzerland" },
+          { "@type": "ListItem", "position": 3, "name": "Cyber City – Tokyo" },
+          { "@type": "ListItem", "position": 4, "name": "Red Desert – Dubai" },
+          { "@type": "ListItem", "position": 5, "name": "Mist Forest – Oregon" },
+          { "@type": "ListItem", "position": 6, "name": "Blue Lagoon – Maldives" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #090a0f;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+      color: #ffffff;
+    }
+
+    /* Subtle background ambient glow */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 16px;
+    }
+
+    .page-header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .page-header p {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      color: #94a3b8;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1200px;
+      user-select: none;
+      touch-action: pan-y;
+      z-index: 1;
+    }
+
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform-style: preserve-3d;
+      cursor: grab;
+    }
+
+    .carousel-track:active {
+      cursor: grabbing;
+    }
+
+    .carousel-card {
+      position: absolute;
+      width: 260px;
+      height: 380px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7),
+                  0 0 0 1px rgba(255, 255, 255, 0.12);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.4s ease,
+                  box-shadow 0.4s ease;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      will-change: transform, opacity;
+    }
+
+    .carousel-card:hover {
+      filter: brightness(1.12);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8),
+                  0 0 20px rgba(255, 255, 255, 0.2),
+                  0 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+
+    .card-content {
+      position: absolute;
+      inset: 0;
+      padding: 24px;
+      background: linear-gradient(
+        to top,
+        rgba(5, 7, 13, 0.92) 0%,
+        rgba(5, 7, 13, 0.4) 50%,
+        transparent 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 500;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.18);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .nav-btn:active {
+      transform: translateY(-50%) scale(0.94);
+    }
+
+    .nav-btn:focus-visible,
+    .dot:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+
+    .nav-btn.prev { left: 24px; }
+    .nav-btn.next { right: 24px; }
+
+    .dots-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 12px;
+      background: #ffffff;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      .page-header h1 { font-size: 1.25rem; }
+      .carousel-card {
+        width: 210px;
+        height: 310px;
+      }
+      .nav-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+      }
+      .nav-btn.prev { left: 10px; }
+      .nav-btn.next { right: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .carousel-card, .dot, .nav-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>3D Carousel</h1>
+    <p>A lightweight 3D curved carousel in pure HTML, CSS and JavaScript. Drag, swipe, click or use the arrow keys.</p>
+  </header>
+
+  <main class="carousel-container" role="region" aria-roledescription="carousel" aria-label="3D carousel of travel destinations">
+    <button class="nav-btn prev" id="prevBtn" aria-label="Previous slide">&#10094;</button>
+    <div class="carousel-track" id="track"></div>
+    <button class="nav-btn next" id="nextBtn" aria-label="Next slide">&#10095;</button>
+  </main>
+
+  <div class="dots-container" id="dots" role="tablist" aria-label="Choose slide"></div>
+
+  <noscript>
+    <p style="position:relative;z-index:2;padding:16px;text-align:center;">
+      This 3D carousel needs JavaScript. Slides: Aurora Borealis (Norway), Alpine Pass (Switzerland),
+      Cyber City (Tokyo), Red Desert (Dubai), Mist Forest (Oregon), Blue Lagoon (Maldives).
+    </p>
+  </noscript>
+
+  <script>
+    const cardData = [
+      { title: "Aurora Borealis", subtitle: "Norway", bg: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800&auto=format&fit=crop" },
+      { title: "Alpine Pass", subtitle: "Switzerland", bg: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&auto=format&fit=crop" },
+      { title: "Cyber City", subtitle: "Tokyo", bg: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=800&auto=format&fit=crop" },
+      { title: "Red Desert", subtitle: "Dubai", bg: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&auto=format&fit=crop" },
+      { title: "Mist Forest", subtitle: "Oregon", bg: "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800&auto=format&fit=crop" },
+      { title: "Blue Lagoon", subtitle: "Maldives", bg: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop" }
+    ];
+
+    const track = document.getElementById("track");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const dotsContainer = document.getElementById("dots");
+
+    let activeIndex = 0;
+
+    let isDragging = false;
+    let startX = 0;
+    let dragSegment = 0;
+    let clickStartX = 0;
+    let clickStartY = 0;
+
+    function renderCarousel() {
+      track.innerHTML = "";
+      dotsContainer.innerHTML = "";
+
+      cardData.forEach((data, index) => {
+        const card = document.createElement("div");
+        card.classList.add("carousel-card");
+        card.setAttribute("role", "img");
+        card.setAttribute("aria-label", `${data.title}, ${data.subtitle}`);
+        card.style.backgroundImage = `url('${data.bg}')`;
+
+        card.innerHTML = `
+          <div class="card-content">
+            <div class="card-title">${data.title}</div>
+            <div class="card-subtitle">${data.subtitle}</div>
+          </div>
+        `;
+        track.appendChild(card);
+
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("tabindex", "0");
+        dot.setAttribute("aria-label", `Go to slide ${index + 1}: ${data.title}`);
+        dot.addEventListener("click", () => centerCard(index));
+        dot.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            centerCard(index);
+          }
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    function centerCard(targetIndex) {
+      const total = cardData.length;
+      let currentModulo = ((activeIndex % total) + total) % total;
+      let diff = targetIndex - currentModulo;
+
+      if (diff > total / 2) diff -= total;
+      if (diff < -total / 2) diff += total;
+
+      activeIndex += diff;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const cards = document.querySelectorAll(".carousel-card");
+      const dots = document.querySelectorAll(".dot");
+      const total = cards.length;
+      const isMobile = window.innerWidth < 640;
+
+      const xSpacing = isMobile ? 160 : 220;
+
+      cards.forEach((card, index) => {
+        let currentModulo = ((activeIndex % total) + total) % total;
+        let offset = index - currentModulo;
+
+        if (offset > total / 2) offset -= total;
+        if (offset < -total / 2) offset += total;
+
+        const xOffset = offset * xSpacing;
+        const rotationY = offset * -22;
+        const scale = 1 - Math.abs(offset) * 0.14;
+        const opacity = Math.max(1 - Math.abs(offset) * 0.35, 0);
+
+        if (Math.abs(offset) > 2) {
+          card.style.opacity = "0";
+          card.style.pointerEvents = "none";
+        } else {
+          card.style.opacity = opacity;
+          card.style.pointerEvents = "auto";
+        }
+
+        card.style.zIndex = 100 - Math.abs(offset);
+        card.style.transform = `
+          translateX(${xOffset}px)
+          scale(${scale})
+          rotateY(${rotationY}deg)
+        `;
+      });
+
+      const currentActive = ((activeIndex % total) + total) % total;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentActive);
+        dot.setAttribute("aria-selected", index === currentActive ? "true" : "false");
+      });
+    }
+
+    prevBtn.addEventListener("click", () => {
+      activeIndex--;
+      updateCarousel();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      activeIndex++;
+      updateCarousel();
+    });
+
+    // Keyboard arrows
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { activeIndex--; updateCarousel(); }
+      if (e.key === "ArrowRight") { activeIndex++; updateCarousel(); }
+    });
+
+    track.addEventListener("pointerdown", (e) => {
+      if (e.target.closest('.nav-btn')) return;
+
+      isDragging = true;
+      startX = e.clientX;
+      clickStartX = e.clientX;
+      clickStartY = e.clientY;
+      dragSegment = 0;
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+
+      const currentX = e.clientX;
+      const deltaX = currentX - startX;
+
+      dragSegment += deltaX;
+      startX = currentX;
+
+      if (Math.abs(dragSegment) > 45) {
+        if (dragSegment < 0) {
+          activeIndex++;
+        } else {
+          activeIndex--;
+        }
+        updateCarousel();
+        dragSegment = 0;
+      }
+    });
+
+    window.addEventListener("pointerup", (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const moveX = Math.abs(e.clientX - clickStartX);
+      const moveY = Math.abs(e.clientY - clickStartY);
+
+      if (moveX < 8 && moveY < 8) {
+        const clickedCard = e.target.closest('.carousel-card');
+        if (clickedCard) {
+          const cards = Array.from(document.querySelectorAll('.carousel-card'));
+          const clickedIndex = cards.indexOf(clickedCard);
+          if (clickedIndex !== -1) {
+            centerCard(clickedIndex);
+          }
+        }
+      }
+    });
+
+    window.addEventListener("pointercancel", () => { isDragging = false; });
+    window.addEventListener("resize", updateCarousel);
+
+    renderCarousel();
+    updateCarousel();
+  </script>
+</body>
+</html>

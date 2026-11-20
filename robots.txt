@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://akshitjoshi-123.github.io/3d-carousel/sitemap.xml
